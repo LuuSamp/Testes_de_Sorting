@@ -22,7 +22,7 @@ int main()
     {
         current_head = createRandomList(15000);
         timeStart = high_resolution_clock::now();
-        insertSort(&current_head, 15000);
+        insertSort(&current_head);
         timeStop = high_resolution_clock::now();
         timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
         cout << "Tempo utilizado na lista " << i+1 << ": " << timeDuration.count() << endl;
