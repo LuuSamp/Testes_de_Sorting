@@ -7,8 +7,6 @@ using std::string;
 
 // Lista duplamente encadeada
 
-struct Node;
-
 Node* createNode(int iPayload)
 {
     Node* temp = (Node*) malloc(sizeof(Node));     
@@ -125,12 +123,14 @@ void deleteNode(Node** head, Node* ptrDelete)
 	free(ptrDelete);
 }
 
+Node* createRandomList(int iLength)
+{
+    Node* firstNode = createNode(rand()%100);
 
+    for(int i = 1; i < iLength; i++)
+    {
+        insertEnd(&firstNode, rand()%100);
+    }
 
-
-
-
-
-
-
-
+    return firstNode;
+}

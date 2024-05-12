@@ -10,3 +10,4 @@ void insertFront(Node**, int);
 void insertEnd(Node**, int);
 void deleteNode(Node**, Node*);
 void displayList(Node*);
+Node* createRandomList(int);
