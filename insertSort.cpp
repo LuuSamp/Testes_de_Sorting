@@ -24,20 +24,35 @@ void insertSort(int arriNumbers[], int iLength)
 
 void insertSort(Node** head, int iLength)
 {
-    Node* iInsertValueNode = *head;
-    Node* iInnerLoopNode = *head;
+    Node* iInsertValueNode = (*head);
+    Node* iInnerLoopNode = (*head);
+    int iInsertValue;
 
     for (int iOuterLoop = 1; iOuterLoop < iLength; iOuterLoop++)
     {
         iInsertValueNode = iInsertValueNode -> ptrNext;
+        iInsertValue = iInsertValueNode -> iPayload;
         iInnerLoopNode = iInsertValueNode -> ptrPrev;
 
-        while (iInsertValueNode -> iPayload < iInnerLoopNode -> iPayload && iInnerLoopNode -> ptrPrev != nullptr)
+        while (iInsertValue < iInnerLoopNode -> iPayload && iInnerLoopNode != nullptr)
         {
             iInnerLoopNode -> ptrNext -> iPayload = iInnerLoopNode -> iPayload;
+            
             iInnerLoopNode = iInnerLoopNode -> ptrPrev;
+
+            if(iInnerLoopNode == nullptr)
+            {
+                break;
+            } 
         }
 
-        iInnerLoopNode -> ptrNext -> iPayload = iInsertValueNode -> iPayload;
+        if(iInnerLoopNode == nullptr)
+        {
+            (*head) -> iPayload = iInsertValue;
+        }
+        else
+        {
+        iInnerLoopNode -> ptrNext -> iPayload = iInsertValue;
+        }
     }
 }
