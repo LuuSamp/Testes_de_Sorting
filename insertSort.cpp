@@ -32,7 +32,7 @@ void insertSort(Node** head)
         iInsertValue = OuterLoopNode -> iPayload;
         InnerLoopNode = OuterLoopNode -> ptrPrev;
 
-        while (iInsertValue < InnerLoopNode -> iPayload && InnerLoopNode != nullptr)
+        while (iInsertValue < InnerLoopNode -> iPayload)
         {
             InnerLoopNode -> ptrNext -> iPayload = InnerLoopNode -> iPayload;
             
