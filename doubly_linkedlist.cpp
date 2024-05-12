@@ -134,3 +134,10 @@ Node* createRandomList(int iLength)
 
     return firstNode;
 }
+
+void swapPayload(Node* node1, Node* node2) 
+{
+    int iTemp = node1->iPayload;
+    node1->iPayload = node2->iPayload;
+    node2->iPayload = iTemp;
+}

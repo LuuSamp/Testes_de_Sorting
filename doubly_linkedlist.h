@@ -11,3 +11,4 @@ void insertEnd(Node**, int);
 void deleteNode(Node**, Node*);
 void displayList(Node*);
 Node* createRandomList(int);
+void swapPayload(Node*, Node*); 
