@@ -22,37 +22,35 @@ void insertSort(int arriNumbers[], int iLength)
     }
 }
 
-void insertSort(Node** head, int iLength)
+void insertSort(Node** head)
 {
-    Node* iInsertValueNode = (*head);
-    Node* iInnerLoopNode = (*head);
-    int iInsertValue;
+    int iInsertValue = 0;
+    Node* InnerLoopNode = (*head);
 
-    for (int iOuterLoop = 1; iOuterLoop < iLength; iOuterLoop++)
+    for (Node* OuterLoopNode = (*head) -> ptrNext; OuterLoopNode != nullptr; OuterLoopNode = OuterLoopNode -> ptrNext)
     {
-        iInsertValueNode = iInsertValueNode -> ptrNext;
-        iInsertValue = iInsertValueNode -> iPayload;
-        iInnerLoopNode = iInsertValueNode -> ptrPrev;
+        iInsertValue = OuterLoopNode -> iPayload;
+        InnerLoopNode = OuterLoopNode -> ptrPrev;
 
-        while (iInsertValue < iInnerLoopNode -> iPayload && iInnerLoopNode != nullptr)
+        while (iInsertValue < InnerLoopNode -> iPayload && InnerLoopNode != nullptr)
         {
-            iInnerLoopNode -> ptrNext -> iPayload = iInnerLoopNode -> iPayload;
+            InnerLoopNode -> ptrNext -> iPayload = InnerLoopNode -> iPayload;
             
-            iInnerLoopNode = iInnerLoopNode -> ptrPrev;
+            InnerLoopNode = InnerLoopNode -> ptrPrev;
 
-            if(iInnerLoopNode == nullptr)
+            if(InnerLoopNode == nullptr)
             {
                 break;
             } 
         }
 
-        if(iInnerLoopNode == nullptr)
+        if(InnerLoopNode == nullptr)
         {
             (*head) -> iPayload = iInsertValue;
         }
         else
         {
-        iInnerLoopNode -> ptrNext -> iPayload = iInsertValue;
+        InnerLoopNode -> ptrNext -> iPayload = iInsertValue;
         }
     }
 }

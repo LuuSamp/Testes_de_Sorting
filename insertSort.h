@@ -1,2 +1,2 @@
 
-void insertSort(struct Node**, int);
+void insertSort(struct Node**);
