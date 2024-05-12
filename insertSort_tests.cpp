@@ -20,7 +20,7 @@ int main()
     Node* current_head = nullptr;
     for(int i = 0; i < 100; i++)
     {
-        current_head = createRandomList(15000);
+        current_head = createRandomList(10000);
         timeStart = high_resolution_clock::now();
         insertSort(&current_head);
         timeStop = high_resolution_clock::now();
@@ -31,6 +31,6 @@ int main()
     }
     cout << endl;
 
-    cout << "Média: " << mean << endl;
+    cout << "Media: " << mean << endl;
 
 }
