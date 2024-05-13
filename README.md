@@ -5,4 +5,4 @@ Os algoritmos de ordenação testados foram:
 
 * Bubble Sort;
 * Selection Sort;
-* Insert Sort.
+* Insertion Sort.
