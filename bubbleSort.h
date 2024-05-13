@@ -1,2 +1,2 @@
-void bubbleSort(Node**);
-void optimizedBubbleSort(Node**, int);
+void bubbleSort(struct Node**);
+void optimizedBubbleSort(struct Node**, int);
