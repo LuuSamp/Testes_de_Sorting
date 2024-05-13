@@ -1,2 +1,2 @@
-void selectionSort(Node**);
-void optimizedSelectionSort(Node**);
+void selectionSort(struct Node**);
+void optimizedSelectionSort(struct Node**);
