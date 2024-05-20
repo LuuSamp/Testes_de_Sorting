@@ -141,3 +141,19 @@ void swapPayload(Node* node1, Node* node2)
     node1->iPayload = node2->iPayload;
     node2->iPayload = iTemp;
 }
+
+int maxValue(Node* head)
+{
+    Node* current = head;
+    int maiorValor = head->iPayload;
+
+    while (current != nullptr)
+    {
+        if (current->iPayload > maiorValor)
+        {
+            maiorValor = current->iPayload;
+        }
+        current = current->ptrNext;
+    }
+    return maiorValor;
+}
