@@ -125,11 +125,11 @@ void deleteNode(Node** head, Node* ptrDelete)
 
 Node* createRandomList(int iLength)
 {
-    Node* firstNode = createNode(rand()%100);
+    Node* firstNode = createNode((rand()%100)+1);
 
     for(int i = 1; i < iLength; i++)
     {
-        insertEnd(&firstNode, rand()%100);
+        insertEnd(&firstNode, (rand()%100)+1);
     }
 
     return firstNode;
