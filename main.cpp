@@ -4,6 +4,7 @@
 #include "insertSort.h"
 #include "bubbleSort.h"
 #include "selectionSort.h"
+#include "countingSort.h"
 
 using std::cout;
 using std::endl;
@@ -38,6 +39,7 @@ int main()
     testFunction("Selection", &selectionSort);
     testFunction("Optimized Selection", &optimizedSelectionSort);
     testFunction("Insertion", &insertSort);
+    testFunction("Counting", &countingSort);
 
     return 0;
 }
