@@ -23,11 +23,14 @@ void insertEnd(Node<T>**, int);
 template <typename T>
 void deleteNode(Node<T>**, Node<T>*);
 
-template <typename T>
-void displayList(Node<T>*);
+namespace auxListFuncs {
 
-template <typename T>
-Node<T>* createRandomList(int);
+    template <typename T>
+    void displayList(Node<T>*);
+
+    template <typename T>
+    Node<T>* createRandomList(int);
+}
 
 template <typename T>
 void swapPayload(Node<T>*, Node<T>*); 

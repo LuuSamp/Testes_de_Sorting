@@ -19,35 +19,6 @@ Node<T>* createNode(int iPayload)
 }
 
 template <typename T>
-void displayList(Node<T>* node)
-{
-    if (node == nullptr)
-    {
-        cout << "Lista vazia: Nao foi possivel realizar displayList" << endl;
-        return;
-    }
-
-    if (node->ptrPrev != nullptr)
-    {
-        cout << "Meio da Lista: Nao foi possivel realizar displayList" << endl;
-        return;
-    }
-
-    Node<T>* temp = node;
-
-    cout << "Payload: ";
-
-    //Percorremos a lista até o fim (ptrNext do último é NULL) 
-    while (temp != nullptr)
-    {
-        cout << temp->iPayload << " ";
-        temp = temp->ptrNext;
-    }
-
-    cout << endl;
-}
-
-template <typename T>
 void insertFront(Node<T>** head, int iPayload)
 {
     Node<T>* newNode = createNode(iPayload);
@@ -126,17 +97,49 @@ void deleteNode(Node<T>** head, Node<T>* ptrDelete)
 	free(ptrDelete);
 }
 
-template <typename T>
-Node<T>* createRandomList(int iLength)
-{
-    Node<T>* firstNode = createNode((rand()%100)+1);
+namespace auxListFuncs {
 
-    for(int i = 1; i < iLength; i++)
+    template <typename T>
+    void displayList(Node<T>* node)
     {
-        insertEnd(&firstNode, (rand()%100)+1);
+        if (node == nullptr)
+        {
+            cout << "Lista vazia: Nao foi possivel realizar displayList" << endl;
+            return;
+        }
+
+        if (node->ptrPrev != nullptr)
+        {
+            cout << "Meio da Lista: Nao foi possivel realizar displayList" << endl;
+            return;
+        }
+
+        Node<T>* temp = node;
+
+        cout << "Payload: ";
+
+        //Percorremos a lista até o fim (ptrNext do último é NULL) 
+        while (temp != nullptr)
+        {
+            cout << temp->iPayload << " ";
+            temp = temp->ptrNext;
+        }
+
+        cout << endl;
     }
 
-    return firstNode;
+    template <typename T>
+    Node<T>* createRandomList(int iLength)
+    {
+        Node<T>* firstNode = createNode((rand()%100)+1);
+
+        for(int i = 1; i < iLength; i++)
+        {
+            insertEnd(&firstNode, (rand()%100)+1);
+        }
+
+        return firstNode;
+    }
 }
 
 template <typename T>
