@@ -19,7 +19,7 @@ void selectionSort(Node<T>** head)
 template<typename T>
 void optimizedSelectionSort(Node<T>** head)
 {
-    int iMinValue = 0;
+    T iMinValue = 0;
     Node<T>* swapNode = nullptr;
 
     for (Node<T>* current_1 = *head; current_1 != nullptr; current_1 = current_1->ptrNext)

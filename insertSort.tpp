@@ -2,9 +2,9 @@
 #include "doubly_linkedlist.h"
 
 template<typename T>
-void insertSort(int arriNumbers[], int iLength)
+void insertSort(T arriNumbers[], int iLength)
 {
-    int iInsertValue = 0;
+    T iInsertValue = 0;
     int iInnerLoop = 0;
 
     for (int iOuterLoop = 1; iOuterLoop < iLength; iOuterLoop++)
@@ -25,7 +25,7 @@ void insertSort(int arriNumbers[], int iLength)
 template<typename T>
 void insertSort(Node<T>** head)
 {
-    int iInsertValue = 0;
+    T iInsertValue = 0;
     Node<T>* InnerLoopNode = (*head);
 
     for (Node<T>* OuterLoopNode = (*head) -> ptrNext; OuterLoopNode != nullptr; OuterLoopNode = OuterLoopNode -> ptrNext)

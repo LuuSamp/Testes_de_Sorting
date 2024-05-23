@@ -2,12 +2,12 @@
 #include "countingSort.h"
 #include "doubly_linkedlist.h"
 
-void countingSort(Node** head)
+void countingSort(Node<int>** head)
 {
     int maiorValor = maxValue(*head);
     int array[maiorValor+1] = {0};
 
-    Node* current1 = *head;
+    Node<int>* current1 = *head;
     int index = 0;
 
     while (current1 != nullptr)
@@ -17,7 +17,7 @@ void countingSort(Node** head)
         current1 = current1->ptrNext;
     }
 
-    Node* current2 = *head;
+    Node<int>* current2 = *head;
 
     for (int i = 0; i <= maiorValor; i++)
     {

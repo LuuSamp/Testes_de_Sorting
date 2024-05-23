@@ -1,8 +1,6 @@
 #ifndef DOUBLY_LINKEDLIST_H
 #define DOUBLY_LINKEDLIST_H
 
-#include "doubly_linkedlist.tpp"
-
 template <typename T>
 struct Node
 {
@@ -12,13 +10,13 @@ struct Node
 };
 
 template <typename T>
-Node<T>* createNode(int);
+Node<T>* createNode(T);
 
 template <typename T>
-void insertFront(Node<T>**, int);
+void insertFront(Node<T>**, T);
 
 template <typename T>
-void insertEnd(Node<T>**, int);
+void insertEnd(Node<T>**, T);
 
 template <typename T>
 void deleteNode(Node<T>**, Node<T>*);
@@ -26,13 +24,14 @@ void deleteNode(Node<T>**, Node<T>*);
 template <typename T>
 void displayList(Node<T>*);
 
-template <typename T>
-Node<T>* createRandomList(int);
+Node<int>* createRandomList(int);
 
 template <typename T>
 void swapPayload(Node<T>*, Node<T>*); 
 
 template <typename T>
-int maxValue(Node<T>*);
+T maxValue(Node<T>*);
+
+#include "doubly_linkedlist.tpp"
 
 #endif

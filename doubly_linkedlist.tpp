@@ -1,14 +1,11 @@
 #include <iostream>
-#include "doubly_linkedlist.h"
 
-using std::cout;
-using std::endl;
-using std::string;
+using namespace std;
 
 // Lista duplamente encadeada
 
 template <typename T>
-Node<T>* createNode(int iPayload)
+Node<T>* createNode(T iPayload)
 {
     Node<T>* temp = (Node<T>*) malloc(sizeof(Node<T>));     
     temp->iPayload = iPayload;
@@ -38,7 +35,7 @@ void displayList(Node<T>* node)
     cout << "Payload: ";
 
     //Percorremos a lista até o fim (ptrNext do último é NULL) 
-    while (temp != nullptr)
+    while(temp != nullptr)
     {
         cout << temp->iPayload << " ";
         temp = temp->ptrNext;
@@ -48,7 +45,7 @@ void displayList(Node<T>* node)
 }
 
 template <typename T>
-void insertFront(Node<T>** head, int iPayload)
+void insertFront(Node<T>** head, T iPayload)
 {
     Node<T>* newNode = createNode(iPayload);
 	
@@ -65,7 +62,7 @@ void insertFront(Node<T>** head, int iPayload)
 }
 
 template <typename T>
-void insertEnd(Node<T>** head, int iPayload)
+void insertEnd(Node<T>** head, T iPayload)
 {
     Node<T>* newNode = createNode(iPayload);
 
@@ -86,7 +83,7 @@ void insertEnd(Node<T>** head, int iPayload)
 }
 
 template <typename T>
-void insertAfter(Node<T>* ptrLocation, int iPayLoad)
+void insertAfter(Node<T>* ptrLocation, T iPayLoad)
 {
 	if (ptrLocation == nullptr)
 	{
@@ -127,19 +124,6 @@ void deleteNode(Node<T>** head, Node<T>* ptrDelete)
 }
 
 template <typename T>
-Node<T>* createRandomList(int iLength)
-{
-    Node<T>* firstNode = createNode((rand()%100)+1);
-
-    for(int i = 1; i < iLength; i++)
-    {
-        insertEnd(&firstNode, (rand()%100)+1);
-    }
-
-    return firstNode;
-}
-
-template <typename T>
 void swapPayload(Node<T>* node1, Node<T>* node2) 
 {
     int iTemp = node1->iPayload;
@@ -148,10 +132,10 @@ void swapPayload(Node<T>* node1, Node<T>* node2)
 }
 
 template <typename T>
-int maxValue(Node<T>* head)
+T maxValue(Node<T>* head)
 {
     Node<T>* current = head;
-    int maiorValor = head->iPayload;
+    T maiorValor = head->iPayload;
 
     while (current != nullptr)
     {
