@@ -7,26 +7,34 @@ using namespace dll;
 void countingSort(Node<int>** head)
 {
     int maiorValor = maxValue(*head);
-    int array[maiorValor+1] = {0};
 
-    Node<int>* current1 = *head;
-    int index = 0;
+    Node<int>* fno = nullptr;
 
-    while (current1 != nullptr)
+    int quantity = 0;
+
+    for(int i = 0; i <= maiorValor; i++)
     {
-        index = current1->iPayload;
-        array[index]++;
-        current1 = current1->ptrNext;
+    quantity = 0;
+    Node<int>* current = *head;
+        while (current != nullptr)
+        {
+            if(current->iPayload == i) quantity++;
+            current = current->ptrNext;
+        }
+    insertEnd(&fno, quantity);
     }
 
-    Node<int>* current2 = *head;
+    Node<int>* current1 = *head;
+    Node<int>* current2 = fno;
 
     for (int i = 0; i <= maiorValor; i++)
     {
-        for (int j = 0; j < array[i]; j++)
+        for (int j = 0; j < current2 -> iPayload; j++)
         {
-            current2->iPayload = i;
-            current2 = current2->ptrNext;
+            current1 -> iPayload = i;
+            current1 = current1->ptrNext;
         }
+        current2 = current2 -> ptrNext;
     }
+    clearList(&fno);
 }
