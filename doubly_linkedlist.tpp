@@ -126,6 +126,12 @@ namespace dll
     }
 
     template <typename T>
+    void clearList(Node<T>** head)
+    {
+        while(*head != nullptr) deleteNode(head, *head);
+    }
+
+    template <typename T>
     void swapPayload(Node<T>* node1, Node<T>* node2) 
     {
         int iTemp = node1->iPayload;
