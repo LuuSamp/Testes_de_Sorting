@@ -14,7 +14,7 @@ using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
 using std::chrono::nanoseconds;
 
-void testFunction(string, void (*)(Node**));
+void testFunction(string, void (*)(Node<int>**));
 void testOptimizedBubbleSort();
 
 int main()
@@ -23,8 +23,6 @@ int main()
     auto timeStart = high_resolution_clock::now();
     auto timeStop = high_resolution_clock::now();
     auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
-
-    Node* current_head = nullptr;
 
     cout << "Metodo";
 
@@ -44,14 +42,14 @@ int main()
     return 0;
 }
 
-void testFunction(string function_name, void (*func)(Node**))
+void testFunction(string function_name, void (*func)(Node<int>**))
 {
     int mean = 0;
     auto timeStart = high_resolution_clock::now();
     auto timeStop = high_resolution_clock::now();
     auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
 
-    Node* current_head = nullptr;
+    Node<int>* current_head = nullptr;
 
     cout << function_name << ",";
     for(int i = 0; i < 100; i++)
@@ -77,7 +75,7 @@ void testOptimizedBubbleSort()
     auto timeStop = high_resolution_clock::now();
     auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
 
-    Node* current_head = nullptr;
+    Node<int>* current_head = nullptr;
 
     cout << "Optimized Bubble" << ",";
     for(int i = 0; i < 100; i++)
