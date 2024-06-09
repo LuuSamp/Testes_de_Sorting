@@ -7,15 +7,9 @@ int main()
 {
     Node<int>* root = nullptr;
     
-    root = insertNode(root, 42);
-    root = insertNode(root, 13);
-    root = insertNode(root, 11);
-    root = insertNode(root, 10);
-    root = insertNode(root, 28);
-    root = insertNode(root, 51);
-    root = insertNode(root, 171);
+    root = createRandomTree(100);
     
-    cout << "BFS Traversal: ";
+    std::cout << "BFS Traversal: ";
     bfsTraversal(root);
     cout << endl;
     
