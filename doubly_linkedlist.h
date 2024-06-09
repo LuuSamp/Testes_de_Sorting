@@ -3,10 +3,11 @@
 
 namespace dll
 {
+    
     template <typename T>
     struct Node
     {
-        T iPayload;
+        T iPayload; // TODO : MUDAR NOME DO PAYLOAD
         Node<T>* ptrNext;
         Node<T>* ptrPrev;
     };
