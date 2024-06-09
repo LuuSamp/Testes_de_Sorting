@@ -94,16 +94,6 @@ namespace tree{
     }
 
     template <typename T>
-    Node<T>* dfsSearch(Node<T>* startingNode, T expectedValue)
-    {
-        if(startingNode == nullptr) return nullptr;
-        else if(expectedValue == startingNode->iPayload) return startingNode;
-        else if(expectedValue < startingNode->iPayload) return dfsSearch(startingNode->ptrLeft, expectedValue);
-        else return dfsSearch(startingNode->ptrRight, expectedValue);
-    }
-
-
-    template <typename T>
     Node<T>* bfsSearch(Node<T>* startingNode, T expectedValue)
     {
         if (startingNode == nullptr) return nullptr;
@@ -139,5 +129,16 @@ namespace tree{
         }
         dll::clearList(&nodeQueueHead);
         return nullptr;
+    }
+
+    template <typename T>
+    Node<T>* dfsSearch(Node<T>* startingNode, T expectedValue)
+    {
+        if(startingNode == nullptr) return startingNode;
+        if(startingNode -> iPayload == expectedValue) return startingNode;
+        Node<T>* left = dfsSearch(startingNode -> ptrLeft, expectedValue);
+        if(left != nullptr) return left;
+        else return dfsSearch(startingNode -> ptrRight, expectedValue);
+        
     }
 };
