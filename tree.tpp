@@ -60,8 +60,8 @@ namespace tree{
     {
         if (startingNode == nullptr) return;
         
-        Node<T>* nodeQueue[100];
-        dll::Node<Node<T>*>* nodeQueueFront = dll::createNode(startingNode);
+        dll::Node<Node<T>*>* nodeQueueHead = dll::createNode(startingNode);
+        dll::Node<Node<T>*>* nodeQueueFront = nodeQueueHead;
         dll::Node<Node<T>*>* nodeQueueRear = nodeQueueFront;
 
         int iQueueFront = 0;
@@ -89,6 +89,8 @@ namespace tree{
             }
             nodeQueueFront = nodeQueueFront -> ptrNext;
         }
+        
+        dll::clearList(&nodeQueueHead);
     }
 
     template <typename T>
@@ -106,8 +108,8 @@ namespace tree{
     {
         if (startingNode == nullptr) return nullptr;
         
-        Node<T>* nodeQueue[100];
-        dll::Node<Node<T>*>* nodeQueueFront = dll::createNode(startingNode);
+        dll::Node<Node<T>*>* nodeQueueHead = dll::createNode(startingNode);
+        dll::Node<Node<T>*>* nodeQueueFront = nodeQueueHead;
         dll::Node<Node<T>*>* nodeQueueRear = nodeQueueFront;
 
         
@@ -118,6 +120,7 @@ namespace tree{
             
             if (currentNode -> iPayload == expectedValue)
             {
+                dll::clearList(&nodeQueueHead);
                 return currentNode;
             }
             
@@ -134,6 +137,7 @@ namespace tree{
             }
             nodeQueueFront = nodeQueueFront -> ptrNext;
         }
+        dll::clearList(&nodeQueueHead);
         return nullptr;
     }
 };
