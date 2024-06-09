@@ -96,8 +96,8 @@ namespace tree{
     {
         if(startingNode == nullptr) return nullptr;
         else if(expectedValue == startingNode->iPayload) return startingNode;
-        else if(expectedValue < startingNode->iPayload) return searchNode(startingNode->ptrLeft, expectedValue);
-        else return searchNode(startingNode->ptrRight, expectedValue);
+        else if(expectedValue < startingNode->iPayload) return dfsSearch(startingNode->ptrLeft, expectedValue);
+        else return dfsSearch(startingNode->ptrRight, expectedValue);
     }
 
 
