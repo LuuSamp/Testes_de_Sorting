@@ -92,18 +92,24 @@ namespace tree{
     }
 
     template <typename T>
-    bool bfsSearch(Node<T>* startingNode, T expectedValue)
+    Node<T>* dfsSearch(Node<T>* startingNode, T expectedValue)
     {
-        if (startingNode == nullptr) return;
+        if(startingNode == nullptr) return nullptr;
+        else if(expectedValue == startingNode->iPayload) return startingNode;
+        else if(expectedValue < startingNode->iPayload) return searchNode(startingNode->ptrLeft, expectedValue);
+        else return searchNode(startingNode->ptrRight, expectedValue);
+    }
+
+
+    template <typename T>
+    Node<T>* bfsSearch(Node<T>* startingNode, T expectedValue)
+    {
+        if (startingNode == nullptr) return nullptr;
         
         Node<T>* nodeQueue[100];
         dll::Node<Node<T>*>* nodeQueueFront = dll::createNode(startingNode);
         dll::Node<Node<T>*>* nodeQueueRear = nodeQueueFront;
 
-        int iQueueFront = 0;
-        int iQueueRear = 1;
-        
-        iQueueRear++;
         
         while (nodeQueueFront != nullptr)
         {
@@ -112,7 +118,7 @@ namespace tree{
             
             if (currentNode -> iPayload == expectedValue)
             {
-                return true
+                return currentNode;
             }
             
             if (currentNode->ptrLeft != nullptr)
@@ -128,6 +134,6 @@ namespace tree{
             }
             nodeQueueFront = nodeQueueFront -> ptrNext;
         }
-        return false;
+        return nullptr;
     }
 };
