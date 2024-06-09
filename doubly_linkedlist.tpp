@@ -5,6 +5,7 @@ using namespace std;
 // Lista duplamente encadeada
 namespace dll
 {
+    
     template <typename T>
     Node<T>* createNode(T iPayload)
     {
@@ -48,7 +49,7 @@ namespace dll
     template <typename T>
     void insertFront(Node<T>** head, T iPayload)
     {
-        Node<T>* newNode = createNode(iPayload);
+        Node<T>* newNode = dll::createNode(iPayload);
         
         if (*head != nullptr)
         {
@@ -65,7 +66,7 @@ namespace dll
     template <typename T>
     void insertEnd(Node<T>** head, T iPayload)
     {
-        Node<T>* newNode = createNode(iPayload);
+        Node<T>* newNode = dll::createNode(iPayload);
 
         if (*head == nullptr)
         {
@@ -91,7 +92,7 @@ namespace dll
             cout << "Location é NULL" << endl;
         }
         
-        Node<T>* newNode = createNode(iPayLoad);
+        Node<T>* newNode = dll::createNode(iPayLoad);
         
         // Corrigir nó a ser inserido
         newNode->ptrNext = ptrLocation->ptrNext;

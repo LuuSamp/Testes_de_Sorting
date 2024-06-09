@@ -5,6 +5,7 @@
 #include "bubbleSort.h"
 #include "selectionSort.h"
 #include "countingSort.h"
+#include "tree.h"
 
 using namespace std;
 using namespace dll;
@@ -13,16 +14,15 @@ using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;
 using std::chrono::nanoseconds;
 
-void testFunction(string, void (*)(Node<int>**));
+void testFunctionSort(string, void (*)(Node<int>**));
 void testOptimizedBubbleSort();
+void testsSort();
+void testBfs();
+void testDfs();
+void testsTree();
 
 int main()
 {
-    int mean = 0;
-    auto timeStart = high_resolution_clock::now();
-    auto timeStop = high_resolution_clock::now();
-    auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
-
     cout << "Metodo";
 
     for(int i = 0; i < 100; i++)
@@ -31,17 +31,13 @@ int main()
     }
     cout << "," << "Media" << endl;
 
-    testFunction("Bubble", &bubbleSort);
-    testOptimizedBubbleSort();
-    testFunction("Selection", &selectionSort);
-    testFunction("Optimized Selection", &optimizedSelectionSort);
-    testFunction("Insertion", &insertSort);
-    testFunction("Counting", &countingSort);
+    testsSort();
+    testsTree();
 
     return 0;
 }
 
-void testFunction(string function_name, void (*func)(Node<int>**))
+void testFunctionSort(string function_name, void (*func)(Node<int>**))
 {
     int mean = 0;
     auto timeStart = high_resolution_clock::now();
@@ -92,3 +88,72 @@ void testOptimizedBubbleSort()
 
     cout << mean << endl;
 }
+
+void testsSort()
+{
+    testFunctionSort("Bubble", &bubbleSort);
+    testOptimizedBubbleSort();
+    testFunctionSort("Selection", &selectionSort);
+    testFunctionSort("Optimized Selection", &optimizedSelectionSort);
+    testFunctionSort("Insertion", &insertSort);
+    testFunctionSort("Counting", &countingSort);
+}
+
+void testBfs()
+{
+    int mean = 0;
+    auto timeStart = high_resolution_clock::now();
+    auto timeStop = high_resolution_clock::now();
+    auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+
+    tree::Node<int>* root = nullptr;
+
+    cout << "BFS Traversal" << ",";
+    for(int i = 0; i < 100; i++)
+    {
+        srand(i);
+        root = tree::createRandomTree(10000);;
+        timeStart = high_resolution_clock::now();
+        tree::bfsSearch(root, 0);
+        timeStop = high_resolution_clock::now();
+        timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+        cout << timeDuration.count() << ",";
+
+        mean += timeDuration.count()/100;
+    }
+
+    cout << mean << endl;
+}
+
+void testDfs()
+{
+    int mean = 0;
+    auto timeStart = high_resolution_clock::now();
+    auto timeStop = high_resolution_clock::now();
+    auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+
+    tree::Node<int>* root = nullptr;
+
+    cout << "DFS Traversal" << ",";
+    for(int i = 0; i < 100; i++)
+    {
+        srand(i);
+        root = tree::createRandomTree(10000);;
+        timeStart = high_resolution_clock::now();
+        tree::dfsSearch(root, 0);
+        timeStop = high_resolution_clock::now();
+        timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+        cout << timeDuration.count() << ",";
+
+        mean += timeDuration.count()/100;
+    }
+
+    cout << mean << endl;
+}
+
+void testsTree()
+{
+    testBfs();
+    testDfs();
+}
+
