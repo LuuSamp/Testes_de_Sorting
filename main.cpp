@@ -6,9 +6,8 @@
 #include "selectionSort.h"
 #include "countingSort.h"
 
-using std::cout;
-using std::endl;
-using std::string;
+using namespace std;
+using namespace dll;
 
 using std::chrono::high_resolution_clock;
 using std::chrono::duration_cast;

@@ -6,15 +6,17 @@ using std::endl;
 using std::string;
 
 // Lista duplamente encadeada
-
-Node<int>* createRandomList(int iLength)
+namespace dll
 {
-    Node<int>* firstNode = createNode((rand()%100)+1);
-
-    for(int i = 1; i < iLength; i++)
+    Node<int>* createRandomList(int iLength)
     {
-        insertEnd(&firstNode, (rand()%100)+1);
-    }
+        Node<int>* firstNode = createNode((rand()%100)+1);
 
-    return firstNode;
+        for(int i = 1; i < iLength; i++)
+        {
+            insertEnd(&firstNode, (rand()%100)+1);
+        }
+
+        return firstNode;
+    }
 }

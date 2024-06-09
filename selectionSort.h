@@ -1,6 +1,7 @@
 #ifndef SELECTIONSORT_H
 #define SELECTIONSORT_H
 
+using namespace dll;
 
 template<typename T>
 void selectionSort(Node<T>**);

@@ -2,6 +2,8 @@
 #include "countingSort.h"
 #include "doubly_linkedlist.h"
 
+using namespace dll;
+
 void countingSort(Node<int>** head)
 {
     int maiorValor = maxValue(*head);

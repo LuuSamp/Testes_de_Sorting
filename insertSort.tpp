@@ -1,6 +1,8 @@
 #include <iostream>
 #include "doubly_linkedlist.h"
 
+using namespace dll;
+
 template<typename T>
 void insertSort(T arriNumbers[], int iLength)
 {
