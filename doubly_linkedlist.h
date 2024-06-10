@@ -27,7 +27,7 @@ namespace dll
     template <typename T>
     void displayList(Node<T>*);
 
-    Node<int>* createRandomList(int);
+    Node<int>* createRandomList(int, int, int);
 
     template <typename T>
     void swapPayload(Node<T>*, Node<T>*); 

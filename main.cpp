@@ -50,7 +50,7 @@ void testFunctionSort(string function_name, void (*func)(Node<int>**))
     for(int i = 0; i < 100; i++)
     {
         srand(i);
-        current_head = createRandomList(10000);
+        current_head = createRandomList(10000, 1, 1000);
         timeStart = high_resolution_clock::now();
         func(&current_head);
         timeStop = high_resolution_clock::now();
@@ -76,7 +76,7 @@ void testOptimizedBubbleSort()
     for(int i = 0; i < 100; i++)
     {
         srand(i);
-        current_head = createRandomList(10000);
+        current_head = createRandomList(10000, 1, 1000);
         timeStart = high_resolution_clock::now();
         optimizedBubbleSort(&current_head, 10000);
         timeStop = high_resolution_clock::now();
@@ -112,7 +112,7 @@ void testBfs()
     for(int i = 0; i < 100; i++)
     {
         srand(i);
-        root = tree::createRandomTree(10000);;
+        root = tree::createRandomTree(10000, 1, 1000);
         timeStart = high_resolution_clock::now();
         tree::bfsSearch(root, 0);
         timeStop = high_resolution_clock::now();
@@ -138,7 +138,7 @@ void testDfs()
     for(int i = 0; i < 100; i++)
     {
         srand(i);
-        root = tree::createRandomTree(10000);;
+        root = tree::createRandomTree(10000, 1, 1000);
         timeStart = high_resolution_clock::now();
         tree::dfsSearch(root, 0);
         timeStop = high_resolution_clock::now();

@@ -10,7 +10,7 @@ namespace tree
         Node<T>* ptrLeft;
         Node<T>* ptrRight;
     };
-    tree::Node<int>* createRandomTree(int);
+    tree::Node<int>* createRandomTree(int, int, int);
 }
 
 #include "tree.tpp"
