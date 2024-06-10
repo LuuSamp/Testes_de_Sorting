@@ -43,6 +43,16 @@ namespace tree{
     }
 
     template <typename T>
+    Node<T>* lesserLeaf(Node<T>* startingNode)
+    {
+        Node<T>* ptrCurrent = startingNode;
+    
+        while (ptrCurrent && ptrCurrent->ptrLeft != nullptr) ptrCurrent = ptrCurrent->ptrLeft;
+        
+        return ptrCurrent;
+    }
+
+    template <typename T>
     Node<T>* deleteNode(Node<T>* startingNode, T iData)
     {
         if (startingNode == nullptr) return nullptr;
@@ -77,9 +87,12 @@ namespace tree{
     }
 
     template <typename T>
-    void clear_tree(Node<T>** root)
+    void clearTree(Node<T>** root)
     {
-        while(*root != nullptr) tree::deleteNode(*root, (*root) -> iPayload);
+        while(*root != nullptr)
+        {
+            tree::deleteNode(*root, (*root) -> iPayload);
+        }
     }
 
     template <typename T>

@@ -33,8 +33,8 @@ int main()
     }
     cout << "," << "Media" << endl;
 
-    //testsSort();
-    //testsTree();
+    testsSort();
+    testsTree();
     testCreateList();
     testCreateTree();
 
@@ -62,6 +62,7 @@ void testFunctionSort(string function_name, void (*func)(Node<int>**))
         cout << timeDuration.count() << ",";
 
         mean += timeDuration.count()/100;
+        dll::clearList(&current_head);
     }
 
     cout << mean << endl;
@@ -88,6 +89,7 @@ void testOptimizedBubbleSort()
         cout << timeDuration.count() << ",";
 
         mean += timeDuration.count()/100;
+        dll::clearList(&current_head);
     }
 
     cout << mean << endl;
@@ -181,6 +183,7 @@ void testCreateList()
         cout << timeDuration.count() << ",";
 
         mean += timeDuration.count()/100;
+        dll::clearList(&current_head);
     }
 
     cout << mean << endl;
@@ -193,14 +196,14 @@ void testCreateTree()
     auto timeStop = high_resolution_clock::now();
     auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
 
-    tree::Node<int>* current_head = nullptr;
+    tree::Node<int>* root = nullptr;
 
     cout << "Create Tree" << ",";
     for(int i = 0; i < 100; i++)
     {
         srand(i);
         timeStart = high_resolution_clock::now();
-        current_head = tree::createRandomTree(10000, 1, 1000);
+        root = tree::createRandomTree(10000, 1, 1000);
         timeStop = high_resolution_clock::now();
         timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
         cout << timeDuration.count() << ",";
