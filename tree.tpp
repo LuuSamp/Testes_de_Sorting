@@ -43,6 +43,46 @@ namespace tree{
     }
 
     template <typename T>
+    Node<T>* deleteNode(Node<T>* startingNode, T iData)
+    {
+        if (startingNode == nullptr) return nullptr;
+        
+        if (iData < startingNode->iPayload) startingNode->ptrLeft = deleteNode(startingNode->ptrLeft, iData);
+        else if (iData > startingNode->iPayload) startingNode->ptrRight = deleteNode(startingNode->ptrRight, iData);
+        else
+        {
+            Node<T>* ptrTemp = nullptr;
+            
+            if (startingNode->ptrLeft == nullptr)
+            {
+                ptrTemp = startingNode->ptrRight;
+                free(startingNode);
+                return ptrTemp;
+            }
+            else if (startingNode->ptrRight == nullptr)
+            {
+                ptrTemp = startingNode->ptrLeft;
+                free(startingNode);
+                return ptrTemp;            
+            }
+            
+            ptrTemp = lesserLeaf(startingNode->ptrRight);
+            
+            startingNode->iPayload = ptrTemp->iPayload;
+            
+            startingNode->ptrRight = deleteNode(startingNode->ptrRight, ptrTemp->iPayload);
+        }
+        
+        return startingNode;
+    }
+
+    template <typename T>
+    void clear_tree(Node<T>** root)
+    {
+        while(*root != nullptr) tree::deleteNode(*root, (*root) -> iPayload);
+    }
+
+    template <typename T>
     int treeHeight(Node<T>* startingNode)
     {
         if (startingNode == nullptr) return 0;
