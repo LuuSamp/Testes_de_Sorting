@@ -54,7 +54,7 @@ void testFunctionSort(string function_name, void (*func)(Node<int>**))
     for(int i = 0; i < 100; i++)
     {
         srand(i);
-        current_head = createRandomList(10000, 1, 1000);
+        current_head = createRandomList(10000, 1, 10000);
         timeStart = high_resolution_clock::now();
         func(&current_head);
         timeStop = high_resolution_clock::now();
@@ -81,7 +81,7 @@ void testOptimizedBubbleSort()
     for(int i = 0; i < 100; i++)
     {
         srand(i);
-        current_head = createRandomList(10000, 1, 1000);
+        current_head = createRandomList(10000, 1, 10000);
         timeStart = high_resolution_clock::now();
         optimizedBubbleSort(&current_head, 10000);
         timeStop = high_resolution_clock::now();
@@ -118,9 +118,9 @@ void testBfs()
     for(int i = 0; i < 100; i++)
     {
         srand(i);
-        root = tree::createRandomTree(10000, 1, 1000);
+        root = tree::createRandomTree(10000, 1, 10000);
         timeStart = high_resolution_clock::now();
-        tree::bfsSearch(root, 0);
+        tree::bfsSearch(root, i+1);
         timeStop = high_resolution_clock::now();
         timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
         cout << timeDuration.count() << ",";
@@ -144,9 +144,9 @@ void testDfs()
     for(int i = 0; i < 100; i++)
     {
         srand(i);
-        root = tree::createRandomTree(10000, 1, 1000);
+        root = tree::createRandomTree(10000, 1, 10000);
         timeStart = high_resolution_clock::now();
-        tree::dfsSearch(root, 0);
+        tree::dfsSearch(root, i+1);
         timeStop = high_resolution_clock::now();
         timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
         cout << timeDuration.count() << ",";
@@ -177,7 +177,7 @@ void testCreateList()
     {
         srand(i);
         timeStart = high_resolution_clock::now();
-        current_head = createRandomList(10000, 1, 1000);
+        current_head = createRandomList(10000, 1, 10000);
         timeStop = high_resolution_clock::now();
         timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
         cout << timeDuration.count() << ",";
@@ -203,7 +203,7 @@ void testCreateTree()
     {
         srand(i);
         timeStart = high_resolution_clock::now();
-        root = tree::createRandomTree(10000, 1, 1000);
+        root = tree::createRandomTree(10000, 1, 10000);
         timeStop = high_resolution_clock::now();
         timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
         cout << timeDuration.count() << ",";
