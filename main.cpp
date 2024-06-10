@@ -20,6 +20,8 @@ void testsSort();
 void testBfs();
 void testDfs();
 void testsTree();
+void testCreateList();
+void testCreateTree();
 
 int main()
 {
@@ -31,8 +33,10 @@ int main()
     }
     cout << "," << "Media" << endl;
 
-    testsSort();
-    testsTree();
+    //testsSort();
+    //testsTree();
+    testCreateList();
+    testCreateTree();
 
     return 0;
 }
@@ -157,3 +161,52 @@ void testsTree()
     testDfs();
 }
 
+void testCreateList()
+{
+    int mean = 0;
+    auto timeStart = high_resolution_clock::now();
+    auto timeStop = high_resolution_clock::now();
+    auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+
+    Node<int>* current_head = nullptr;
+
+    cout << "Create List" << ",";
+    for(int i = 0; i < 100; i++)
+    {
+        srand(i);
+        timeStart = high_resolution_clock::now();
+        current_head = createRandomList(10000, 1, 1000);
+        timeStop = high_resolution_clock::now();
+        timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+        cout << timeDuration.count() << ",";
+
+        mean += timeDuration.count()/100;
+    }
+
+    cout << mean << endl;
+}
+
+void testCreateTree()
+{
+    int mean = 0;
+    auto timeStart = high_resolution_clock::now();
+    auto timeStop = high_resolution_clock::now();
+    auto timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+
+    tree::Node<int>* current_head = nullptr;
+
+    cout << "Create Tree" << ",";
+    for(int i = 0; i < 100; i++)
+    {
+        srand(i);
+        timeStart = high_resolution_clock::now();
+        current_head = tree::createRandomTree(10000, 1, 1000);
+        timeStop = high_resolution_clock::now();
+        timeDuration = duration_cast<nanoseconds>(timeStop - timeStart);
+        cout << timeDuration.count() << ",";
+
+        mean += timeDuration.count()/100;
+    }
+
+    cout << mean << endl;
+}
